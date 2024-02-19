@@ -45,9 +45,12 @@ def main(page: ft.Page):
         except:
             return 'Undefield'
         
-        digits = min(abs(Decimal(value).as_tuple().exponent), 5)
-        return format(value, f'.{digits}')
-
+        try:
+            digits = min(abs(Decimal(value).as_tuple().exponent), 5)
+            return format(value, f'.{digits}')
+        except:
+            return str(value)
+        
     def select(e):
         value_at = result.value if result.value not in ('0', 'Undefield') else ''
         value = e.control.content.value
